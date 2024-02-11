@@ -24,6 +24,9 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
+def cstr(string, color=bcolors.HEADER):
+    return color + string + bcolors.ENDC
+
 def hex_to_rgb(hx):
     hx = hx.lstrip('#')
     return tuple(int(hx[i:i + 2], 16) for i in (0, 2, 4))
@@ -49,6 +52,7 @@ def get_cmap(colors):
 
 
 if __name__ == "__main__":
+    print(f"{cstr('Welcome to', color=bcolors.OKBLUE)} {cstr('PEACHY', color=bcolors.UNDERLINE)}")
     rs = np.array([hex_to_rgb(r) for r in ncolors.reds])
 
     # cmap2 = LinearSegmentedColormap.from_list("mycmap", list(zip(ncolors.creamy_values, cs/255.)))
